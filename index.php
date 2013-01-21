@@ -114,7 +114,7 @@ $proj1 .= '%'  ;
 // first connect to the correct database
 db_connect( $w2Pconfig['mantis_dbhost'], $w2Pconfig['mantis_dbname'],
 	$w2Pconfig['mantis_dbuser'], $w2Pconfig['mantis_dbpass'], $w2Pconfig['dbpersist'] );
-
+db_exec('SET NAMES utf8');
 
 $idprj = 0;
 $query1= "SELECT id FROM $mantis_project_table WHERE name LIKE '$proj' " ;
@@ -214,6 +214,6 @@ while ($row2 = mysql_fetch_array($result2, MYSQL_NUM)) {
 // connect again to DP  database
 db_connect( $w2Pconfig['dbhost'], $w2Pconfig['dbname'],
 	$w2Pconfig['dbuser'], $w2Pconfig['dbpass'], $w2Pconfig['dbpersist'] );
-
+db_exec('SET NAMES utf8');
 ?>
 </table>

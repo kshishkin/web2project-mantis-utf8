@@ -28,6 +28,7 @@ $description	.= $row1['additional_information'];
 
 // connect again to W2P  database
 db_connect( $w2Pconfig['dbhost'], $w2Pconfig['dbname'],$w2Pconfig['dbuser'], $w2Pconfig['dbpass'], $w2Pconfig['dbpersist'] );
+db_exec('SET NAMES utf8');
 
 $summary .= " ( $bug_id )";
 

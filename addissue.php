@@ -31,6 +31,7 @@ if($action) {
 
 		// first connect to the correct database
 		db_connect( $w2Pconfig['mantis_dbhost'], $w2Pconfig['mantis_dbname'],$w2Pconfig['mantis_dbuser'], $w2Pconfig['mantis_dbpass'], $w2Pconfig['dbpersist'] );
+		db_exec('SET NAMES utf8');
 		// get the definitions
 		$prefix =  w2PgetConfig( 'mantis_w2p_pref') ;
 		$mantisprefix =  w2PgetConfig( 'mantis_prefix') ;
@@ -52,10 +53,14 @@ if($action) {
 		} else {
 			// connect to the DP database
 			db_connect( $w2Pconfig['dbhost'], $w2Pconfig['dbname'],$w2Pconfig['dbuser'], $w2Pconfig['dbpass'], $w2Pconfig['dbpersist'] );
+			db_exec('SET NAMES utf8');
+				
 			$query3="select value_charvalue from custom_fields_values,custom_fields_struct where value_object_id=$project_id and value_field_id=field_id and field_name='Mantis' ";
 			$result3 = mysql_query( $query3 )or die(mysql_error());
 			//  connect to the mantis database
 			db_connect( $w2Pconfig['mantis_dbhost'], $w2Pconfig['mantis_dbname'],$w2Pconfig['mantis_dbuser'], $w2Pconfig['mantis_dbpass'], $w2Pconfig['dbpersist'] );
+			db_exec('SET NAMES utf8');
+			
 			while ($row3 = mysql_fetch_array($result3, MYSQL_NUM)) {
 				$proj = $row3[0] ;
 			}
@@ -117,6 +122,7 @@ if($action) {
 
 		// connect again to W2P  database
 		db_connect( $w2Pconfig['dbhost'], $w2Pconfig['dbname'],$w2Pconfig['dbuser'], $w2Pconfig['dbpass'], $w2Pconfig['dbpersist'] );
+		db_exec('SET NAMES utf8');
 		
 		// now create the task if required
 		if ( $create_task == 1) {
