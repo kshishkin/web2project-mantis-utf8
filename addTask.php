@@ -38,6 +38,11 @@ $task->task_name = $summary;
 $task->task_project = $project_id;
 $task->task_description = $description;
 $task->task_owner = $AppUI->user_id;
+$task->task_start_date = date("Y-m-d h:i:s");
+$task->task_end_date = date("Y-m-d h:i:s");
+$task->task_priority = 3;
+
+
 $task->store();
 
 $link = "m=tasks&a=addedit&task_id=" . $task->task_id;
